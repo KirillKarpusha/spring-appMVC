@@ -1,0 +1,28 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<beans:beans xmlns:beans= "http://www.springframework.org/schema/beans"
+             xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+             xmlns= "http://www.springframework.org/schema/security"
+             xsi:schemaLocation= "http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http auto-config="true" use-expressions="true"><!--shotcut которій добавляет в конфигурацию сразу несколько доп елементов в фоновом режиме такие как form-login - для поддержки аунтификации с пом html формі httpbasic для поодержки базовай http аунтификации и logout для добавления логаут функционал для приложения -->
+
+     <!--   <intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" /> -->
+        <form-login login-processing-url="/static/j_spring_security_check"
+                    login-page="/"
+                    authentication-failure-url="/login?login_error=t"/>
+
+    </http>
+
+    <authentication-manager><!--конфигурирует бин authenticationmanager-а кот проводит процедуру аунтификации на основе credentions собраніе с пом стандартной html формі или базовой формі стан аунтиф http -->
+        <authentication-provider><!-- используеться по умолчанию и содержит набор аунтиф провайдеров и делегирует процесс аунтиф им...-->
+            <user-service><!--какждій аунтифик провайдер указів с пом соотв елемента.Долее делигируеться загрука данніх о пользователе обьекту  user-service кот читает данніе о пользователе и хранит их в памяти-->
+                <user name="admin" password="nimda" authorities="ROLE_ADMIN" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+
+</beans:beans>

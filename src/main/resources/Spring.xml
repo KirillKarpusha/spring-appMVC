@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
  		http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-    <bean id="bussines" class="com.boraji.tutorial.spring.model.Bussines"/>
 
-    <bean id="eventLogger" class="ua.epam.spring.core.loggers.ConsoleEventLogger"/>
+    <!-- Register the bean -->
 
-    <bean id="app" class="ua.epam.spring.core.App"/>
+    <bean id="name" class="com.boraji.tutorial.spring.model.Name"/>
+    <!--<bean name="name,secondname" class="com.boraji.tutorial.spring.model.Name"/>
+    <alias name="name" alias="secondname"/> -->
 
-</beans>
+  <!--  <import resource="classpath:security-config.xml"/> -->
+    <!--   <import resource="classpath*:/security-config.xml"></import>-->
+
+ </beans>
